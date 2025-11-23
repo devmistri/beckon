@@ -1,0 +1,21 @@
+{
+    "folders": [
+        {
+            "path": "."
+        },
+        {
+            "path": "db"
+        },
+        {
+            "path": "events_api"
+        }
+    ],
+
+    "settings": {
+        "git.autoRepositoryDetection": "subFolders",
+        "scm.alwaysShowRepositories": true,
+        "terminal.integrated.cwd": "${workspaceFolder}",
+        "files.trimFinalNewlines": true,
+        "files.trimTrailingWhitespace": true
+    }
+}

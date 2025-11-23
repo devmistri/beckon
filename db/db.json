@@ -1,0 +1,67 @@
+{
+  "events": [
+    {
+      "name": "Game Night",
+      "location": "London, UK",
+      "starts_at": "2025-11-30T23:00:00+00:00",
+      "id": 1
+    },
+    {
+      "name": "Diwali Party",
+      "location": "KoC, Westborough, MA",
+      "starts_at": "2025-11-02T02:00:00+00:00",
+      "id": 2
+    }
+  ],
+  "rsvps": [
+    {
+      "eventId": "1",
+      "name": "Alice",
+      "status": "yes",
+      "date": "2025-11-19T03:20:09.594891+00:00",
+      "id": 1
+    },
+    {
+      "eventId": "1",
+      "name": "Bob",
+      "status": "no",
+      "date": "2025-11-19T03:20:23.673626+00:00",
+      "id": 2
+    },
+    {
+      "eventId": "1",
+      "name": "Charlie",
+      "status": "yes",
+      "date": "2025-11-19T03:20:35.988744+00:00",
+      "id": 3
+    },
+    {
+      "eventId": "2",
+      "name": "Anand",
+      "status": "yes",
+      "date": "2025-11-19T03:23:46.531930+00:00",
+      "id": 4
+    },
+    {
+      "eventId": "2",
+      "name": "Bhavana",
+      "status": "yes",
+      "date": "2025-11-19T03:24:01.064395+00:00",
+      "id": 5
+    },
+    {
+      "eventId": "2",
+      "name": "Mahesh",
+      "status": "no",
+      "date": "2025-11-19T03:24:14.098236+00:00",
+      "id": 6
+    },
+    {
+      "eventId": "2",
+      "name": "Aarthi",
+      "status": "no",
+      "date": "2025-11-19T03:24:23.543048+00:00",
+      "id": 7
+    }
+  ]
+}

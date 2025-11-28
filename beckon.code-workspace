@@ -8,6 +8,9 @@
         },
         {
             "path": "events_api"
+        },
+        {
+            "path": "rsvp_api"
         }
     ],
 

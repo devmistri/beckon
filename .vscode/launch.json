@@ -1,0 +1,77 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Database",
+            "type": "node",
+            "request": "launch",
+            "program": "${workspaceFolder}/db/node_modules/.bin/json-server",
+            "args": [
+                "--port",
+                "3000",
+                "--watch",
+                "db.json"
+            ],
+            "cwd": "${workspaceFolder}/db",
+            "console": "integratedTerminal"
+        },
+        {
+            "name": "Events API",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "flask",
+            "python": "${workspaceFolder}/events_api/venv/bin/python",
+            "env": {
+                "FLASK_APP": "main.py",
+                "FLASK_DEBUG": "1"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--port",
+                "5000",
+                "--reload"
+            ],
+            "jinja": true,
+            "autoStartBrowser": false,
+            "cwd": "${workspaceFolder}/events_api",
+            "consoleName": "Events API"
+        },
+        {
+            "name": "RSVP API",
+            "type": "debugpy",
+            "request": "launch",
+            "module": "flask",
+            "python": "${workspaceFolder}/rsvp_api/venv/bin/python",
+            "env": {
+                "FLASK_APP": "main.py",
+                "FLASK_DEBUG": "1"
+            },
+            "args": [
+                "run",
+                "--no-debugger",
+                "--port",
+                "5001",
+                "--reload"
+            ],
+            "jinja": true,
+            "autoStartBrowser": false,
+            "cwd": "${workspaceFolder}/rsvp_api",
+            "consoleName": "RSVP API"
+        }
+    ],
+    "compounds": [
+        {
+            "name": "Beckon",
+            "configurations": [
+                "Database",
+                "Events API",
+                "RSVP API"
+            ],
+            "stopAll": true
+        }
+    ]
+}

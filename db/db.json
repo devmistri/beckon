@@ -1,67 +1,73 @@
 {
   "events": [
     {
-      "name": "Game Night",
-      "location": "London, UK",
-      "starts_at": "2025-11-30T23:00:00+00:00",
-      "id": 1
+      "id": "816c",
+      "name": "Thanksgiving",
+      "starts_at": "2025-11-27T23:00:00+00:00",
+      "location": "Ken's House"
     },
     {
-      "name": "Diwali Party",
+      "id": "4f20",
+      "location": "London, UK",
+      "name": "Game Night",
+      "starts_at": "2025-11-30T23:00:00+00:00"
+    },
+    {
+      "id": "349c",
       "location": "KoC, Westborough, MA",
-      "starts_at": "2025-11-02T02:00:00+00:00",
-      "id": 2
+      "name": "Diwali Party",
+      "starts_at": "2025-11-02T02:00:00+00:00"
     }
   ],
   "rsvps": [
     {
-      "eventId": "1",
+      "eventId": "4f20",
       "name": "Alice",
       "status": "yes",
       "date": "2025-11-19T03:20:09.594891+00:00",
-      "id": 1
+      "id": "hf3d"
     },
     {
-      "eventId": "1",
+      "eventId": "4f20",
       "name": "Bob",
       "status": "no",
       "date": "2025-11-19T03:20:23.673626+00:00",
-      "id": 2
+      "id": "8d76"
     },
     {
-      "eventId": "1",
+      "eventId": "4f20",
       "name": "Charlie",
       "status": "yes",
       "date": "2025-11-19T03:20:35.988744+00:00",
-      "id": 3
+      "id": "5d31"
     },
     {
-      "eventId": "2",
+      "eventId": "349c",
       "name": "Anand",
       "status": "yes",
       "date": "2025-11-19T03:23:46.531930+00:00",
-      "id": 4
+      "id": "ac5d"
     },
     {
-      "eventId": "2",
+      "eventId": "349c",
       "name": "Bhavana",
       "status": "yes",
       "date": "2025-11-19T03:24:01.064395+00:00",
-      "id": 5
+      "id": "85bf"
     },
     {
-      "eventId": "2",
+      "eventId": "349c",
       "name": "Mahesh",
       "status": "no",
       "date": "2025-11-19T03:24:14.098236+00:00",
-      "id": 6
+      "id": "fa7b"
     },
     {
-      "eventId": "2",
+      "eventId": "349c",
       "name": "Aarthi",
       "status": "no",
       "date": "2025-11-19T03:24:23.543048+00:00",
-      "id": 7
+      "id": "44bd"
     }
   ]
 }

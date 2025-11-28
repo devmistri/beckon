@@ -12,6 +12,21 @@ events_api = Flask(__name__)
 DATABASE_URL = os.getenv("DATABASE_URL")
 
 
+def _get_event_or_404(event_id):
+    try:
+        response = requests.get(f"{DATABASE_URL}/events/{event_id}")
+
+        if response.status_code == 404:
+            return None, ({"error": f"Event '{event_id}' was not found"}, 404)
+
+        response.raise_for_status()  # raise for other errors
+
+        return response.json(), None
+
+    except requests.exceptions.RequestException as e:
+        return None, ({"error": "Service unavailable"}, 503)
+
+
 @events_api.post("/api/events")
 def create_event():
     data = request.json
@@ -31,20 +46,17 @@ def get_events():
 
 @events_api.get("/api/events/<id>")
 def get_event(id: str):
-    event = requests.get(f"{DATABASE_URL}/events/{id}").json()
+    event, error = _get_event_or_404(id)
 
-    if not event:
-        return { "error": f"Event '{id}' was not found" }, 404
-
-    return event
+    return event or error
 
 
 @events_api.patch("/api/events/<id>")
 def update_event(id: str):
-    event = requests.get(f"{DATABASE_URL}/events/{id}").json()
+    event, error = _get_event_or_404(id)
 
-    if not event:
-        return { "error": f"Event '{id}' was not found" }, 404
+    if error:
+        return error
 
     updates = request.json
 
@@ -52,19 +64,19 @@ def update_event(id: str):
         if k in event:
             event[k] = v
 
-    requests.patch(f"{DATABASE_URL}/events/{id}", json=event).json()
+    requests.patch(f"{DATABASE_URL}/events/{id}", json=event)
 
     return event
 
 
 @events_api.delete("/api/events/<id>")
 def delete_event(id: str):
-    event = requests.get(f"{DATABASE_URL}/events/{id}").json()
+    event, error = _get_event_or_404(id)
 
-    if not event:
-        return { "error": f"Event '{id}' was not found" }, 404
+    if error:
+        return error
 
-    requests.delete(f"{DATABASE_URL}/events/{id}").json()
+    requests.delete(f"{DATABASE_URL}/events/{id}")
 
     return event
 
@@ -73,10 +85,10 @@ def delete_event(id: str):
 
 @events_api.post("/api/events/<event_id>/rsvps")
 def create_rsvp(event_id: str):
-    event = requests.get(f"{DATABASE_URL}/events/{event_id}").json()
+    event, error = _get_event_or_404(event_id)
 
-    if not event:
-        return { "error": f"Event '{event_id}' was not found" }, 404
+    if error:
+        return error
 
     data = request.json
 
@@ -94,10 +106,10 @@ def create_rsvp(event_id: str):
 
 @events_api.get("/api/events/<event_id>/rsvps")
 def get_rsvps(event_id: str):
-    event = requests.get(f"{DATABASE_URL}/events/{event_id}").json()
+    event, error = _get_event_or_404(event_id)
 
-    if not event:
-        return { "error": f"Event '{event_id}' was not found" }, 404
+    if error:
+        return error
 
     rsvps = requests.get(f"{DATABASE_URL}/rsvps?eventId={event_id}").json()
 

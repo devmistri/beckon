@@ -81,40 +81,5 @@ def delete_event(id: str):
     return event
 
 
-# --- RSVPs ---
-
-@events_api.post("/api/events/<event_id>/rsvps")
-def create_rsvp(event_id: str):
-    event, error = _get_event_or_404(event_id)
-
-    if error:
-        return error
-
-    data = request.json
-
-    rsvp = {
-        "eventId": event_id,
-        "name": data["name"],
-        "status": data["status"], # "yes", "no", "maybe"
-        "date": datetime.now(timezone.utc).isoformat()
-    }
-
-    new_rsvp = requests.post(f"{DATABASE_URL}/rsvps", json=rsvp).json()
-
-    return new_rsvp
-
-
-@events_api.get("/api/events/<event_id>/rsvps")
-def get_rsvps(event_id: str):
-    event, error = _get_event_or_404(event_id)
-
-    if error:
-        return error
-
-    rsvps = requests.get(f"{DATABASE_URL}/rsvps?eventId={event_id}").json()
-
-    return rsvps
-
-
 if __name__ == "__main__":
     events_api.run(debug=True, port=5000, load_dotenv=True)
